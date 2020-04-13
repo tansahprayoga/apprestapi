@@ -16,7 +16,7 @@ exports.tampilsemuamahasiswa = function (req,res){
             response.ok(rows, res)
         }
     });
-};
+}
 //menapilkan semua data mahasiswa berdasarkan id
 exports.tampilberdasarkanid = function(req,res){
     let id = req.params.id
@@ -29,7 +29,7 @@ exports.tampilberdasarkanid = function(req,res){
             response.ok(rows, res);
         }
     });
-};
+}
 //menampilkan data mahasiswa
 exports.tambahMahasiswa = function(req,res){
     var nim = req.body.nim;
@@ -43,7 +43,7 @@ exports.tambahMahasiswa = function(req,res){
            response.ok("Berhasil Menambahkan Data",res)
        }
    });
-};
+}
 //mengubah data berdasarkan id
 exports.ubahMahasiswa = function(req,res){
     var id = req.body.id_mahasiswa;
@@ -59,4 +59,17 @@ exports.ubahMahasiswa = function(req,res){
             response.ok("Berhasil Ubah Data",res)
         }
     });
-};
+}
+//Menghapus data berdasarkan id
+exports.hapusMahasiswa = function (req,res){
+    var id = req.body.id_mahasiswa;
+    connection.query('DELETE FROM mahasiswa WHERE id_mahasiswa=?',[id],
+    function (error, rows, fields){
+        if(error){
+            console.log(error);
+        }else{
+
+            response.ok("Berhasil Ubah Data",res)
+        }
+    });
+}
